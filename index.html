@@ -11,6 +11,7 @@
     <script src="https://git123hub.github.io/executescript/executescript.min.js"></script>
     <script type="text/javascript">
     // <![CDATA[
+      var __clear = false;
       var maincon = document.getElementById("main");
       function insertInput () {
         var div1 = document.createElement("div");
@@ -29,6 +30,10 @@
         }
         input.readOnly = true;
         that.disabled = true;
+        if (__clear) {
+          __clear = false;
+          maincon.innerHTML = "";
+        }
         insertInput ();
       }
       function excommand2 (str) {
@@ -40,6 +45,7 @@
           address = str; decrement = null;
         }
         switch (address) {
+          case "clear": __clear=true; return null;
           case "echo": return decrement;
           case "expr": return __execute(decrement);
         }
