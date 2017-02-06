@@ -21,9 +21,12 @@
       function excommand (that) {
         var parent = that.parentElement;
         var input = parent.children[0].children[0];
-        var div1 = document.createElement("div");
-        div1.innerHTML = "&lt " + excommand2 (input.value);
-        parent.appendChild(div1);
+        var inpv = excommand2 (input.value);
+        if (inpv != null) {
+          var div1 = document.createElement("div");
+          div1.innerHTML = "&lt " + inpv;
+          parent.appendChild(div1);
+        }
         input.readOnly = true;
         that.disabled = true;
       }
@@ -34,6 +37,10 @@
           address = param[1]; decrement = param[2];
         } else {
           address = str; decrement = null;
+        }
+        switch (address) {
+          case "echo": return decrement;
+          case "expr": return __execute(decrement);
         }
       }
       insertInput ();
