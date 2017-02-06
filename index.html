@@ -14,11 +14,15 @@
       var maincon = document.getElementById("main");
       function insertInput () {
         var div1 = document.createElement("div");
-        div1.innerHTML = "<span style='float: left; width: 92.5%;'>&gt; <input type='text' style='width: calc(100% - 20px);' /></span><input type='button' value='Enter' style='width: 6%; float: right' onclick='excommand(this)' /><br style='clear:both' />"
+        div1.innerHTML = "<span style='float: left; width: 92.5%;'>&gt; <input type='text' style='width: calc(100% - 20px);' /></span><input type='button' value='Enter' style='width: 6%; float: right' onclick='excommand(this)' /><br style='clear:both' />";
         maincon.appendChild(div1);
       }
       function excommand (that) {
-        that.parentElement.children[0].children[0].readonly = true;
+        var parent = that.parentElement;
+        var input = parent.children[0].children[0];
+        var div1 = document.createElement("div");
+        div1.innerHTML = "&lt " + excommand2 (input.value);
+        input.readOnly = true;
         that.disabled = true;
       }
       insertInput ();
