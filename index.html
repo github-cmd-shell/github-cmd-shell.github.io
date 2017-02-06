@@ -50,7 +50,7 @@
           case "expr": return __execute(decrement);
           case "return": location.href="https://git123hub.github.io/index"; return;
           case "var":
-            param = str.match(/^\s*-(.)\s*(.*)$/);
+            param = decrement.match(/^\s*-(.)\s*(.*)$/);
             decrement = param[2];
             switch (param[1]) {
               case "g": return varlist[decrement];
