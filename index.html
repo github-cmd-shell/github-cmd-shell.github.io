@@ -25,7 +25,7 @@
         var inpv = excommand2 (input.value);
         if (inpv != null) {
           var div1 = document.createElement("div");
-          div1.innerHTML = "&lt " + inpv;
+          div1.innerHTML = "&lt <span style='white-space: pre'>" + inpv + "</span>";
           parent.appendChild(div1);
         }
         input.readOnly = true;
