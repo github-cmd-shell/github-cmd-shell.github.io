@@ -45,9 +45,10 @@
           address = str; decrement = null;
         }
         switch (address) {
-          case "clear": __clear=true; return null;
+          case "clear": __clear=true; return;
           case "echo": return decrement;
           case "expr": return __execute(decrement);
+          case "return": location.href="https://git123hub.github.io/index"; return;
         }
       }
       insertInput ();
