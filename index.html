@@ -49,14 +49,14 @@
         }
         switch (address) {
           case "clear": __clear=true; return;
-          case "echo": return decrement;
-          case "expr": return __execute(decrement);
+          case "echo": return escapeHTML(decrement);
+          case "expr": return escapeHTML(__execute(decrement));
           case "return": location.href="https://git123hub.github.io/index"; return;
           case "var":
             param = decrement.match(/^\s*-(.)\s*(.*)$/);
             decrement = param[2];
             switch (param[1]) {
-              case "g": return varlist[decrement];
+              case "g": return escapeHTML(varlist[decrement]);
               case "r": delete varlist[decrement]; break;
               case "s": param = decrement.match(/^(.*?)\s*=(.*)$/); varlist[param[1]] = param[2];
             }
