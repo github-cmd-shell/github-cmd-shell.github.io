@@ -55,7 +55,7 @@
             switch (param[1]) {
               case "g": return varlist[decrement];
               case "r": delete varlist[decrement]; break;
-              case "s": param = decrement.match(/^\s(.*?)\s*=(.*)$/); varlist[param[1]] = param[2];
+              case "s": param = decrement.match(/^(.*?)\s*=(.*)$/); varlist[param[1]] = param[2];
             }
           break;
         }
