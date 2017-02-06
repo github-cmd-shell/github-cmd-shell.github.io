@@ -71,6 +71,7 @@
             tmp = "";
             while (i < l && str[i] !== "%") {
               tmp += str[i];
+              i++;
             }
             if (tmp === "") { outs += "%"; } else { outs += varlist[tmp]; }
           } else outs += str[i];
