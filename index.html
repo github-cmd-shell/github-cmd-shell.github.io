@@ -37,10 +37,13 @@
         insertInput ();
       }
       function excommand2 (str) {
-        var param = str.match(/^([^\s]*)\s(.*)$/);
+        var param = str.match(/^([^\s]*)(\*?)\s(.*)$/);
         var address, decrement;
         if (param) {
-          address = param[1]; decrement = param[2];
+          address = param[1]; decrement = param[3];
+          if (param[2] === "*") {
+            decrement = __parse(decrement);
+          }
         } else {
           address = str; decrement = null;
         }
@@ -58,6 +61,19 @@
               case "s": param = decrement.match(/^(.*?)\s*=(.*)$/); varlist[param[1]] = param[2];
             }
           break;
+        }
+      }
+      function parse (str) {
+        str = str.split("");
+        for (var i = 0, l = str.length, tmp, outs = ""; i < l; i++) {
+          if (str[i] === "%") {
+            i++;
+            tmp = "";
+            while (i < l && str[i] !== "%") {
+              tmp += str[i];
+            }
+            if (tmp === "") { outs += "%"; } else { outs += varlist[tmp]; }
+          } else outs += str[i];
         }
       }
       insertInput ();
